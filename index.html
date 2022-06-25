@@ -10,6 +10,7 @@
 </head>
     <body>
         <header align = "center" >
+            a.logo>img
             <a href="index.html" class="logo"><img src="images/Shapka.jpg" alt=""></a>
         <ul class="mnu_top">
             <li><a href="index.html">Главная</a></li>
@@ -60,33 +61,8 @@
                     <img class="post" src="images/rock-music-poster-2773311.jpg" alt="">
                     <p>Вы отчаянный любитель рока? Но негде потусить?. 30 июля в 21:00 только горячие хиты 90-х 00-х. Тематические костюмы. Только хорошая музыка. Приходите! 30 июля в 21:00 </p>
                 </div>
-
             </div>
-
-
-
-
-
         </div>
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
             let timer_show = document.getElementById("timer");
             let timerop_show = document.getElementById("timerop");
@@ -98,14 +74,14 @@ function diffSubtract(date1, date2) {
 }
 
 let end_date = {
-    "hours": "2", // Час
-    "minutes": "00", // Минуты
-    "seconds": "00" // Секунды
+    "hours": "2", 
+    "minutes": "00", 
+    "seconds": "00" 
 }
 let start_date = {
-    "hours": "17", // Час
-    "minutes": "00", // Минуты
-    "seconds": "00" // Секунды
+    "hours": "17",
+    "minutes": "00", 
+    "seconds": "00"
 }
 let nowday = new Date();
 let sdf = nowday.getHours();
@@ -120,23 +96,17 @@ if (sdf < 5) {
 
     
 timer = setInterval(function () {
-    // Получение времени сейчас
     let now = new Date();
     let nnow = `${now.getFullYear()}.${now.getDay()}.${now.getDate()}.${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
-    // Получение заданного времени
     let ndate = new Date(nnow);
     let date = new Date(end_date_str);
     let dateopen = new Date(start_date_str);
-    // Вычисление разницы времени 
     let ms_left = diffSubtract(ndate, date);
     let ms_leftop = diffSubtract(ndate, dateopen);
-    // Получаем время зависимую от разницы
     let res = new Date(ms_left);
     let resop = new Date(ms_leftop);
-    // Делаем строку для вывода
     let str_timer = `${res.getHours()}:${res.getMinutes()}:${res.getSeconds()}`;
     let str_timerop = `${resop.getHours()}:${resop.getMinutes()}:${resop.getSeconds()}`;
-    // Выводим время
     timer_show.innerHTML = str_timer;
     timerop_show.innerHTML = str_timerop;
 }, 1000)}
@@ -150,30 +120,24 @@ if (sdf > 5) {
 
     
 timer = setInterval(function () {
-    // Получение времени сейчас
     let now = new Date();
     let nnow = `${now.getFullYear()}.${now.getDay()}.${now.getDate()}.${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
-    // Получение заданного времени
     let ndate = new Date(nnow);
     let date = new Date(end_date_str);
     let dateopen = new Date(start_date_str);
-    // Вычисление разницы времени 
     let ms_left = diffSubtract(ndate, date);
     let ms_leftop = diffSubtract(ndate, dateopen);
-    // Получаем время зависимую от разницы
     let res = new Date(ms_left);
     let resop = new Date(ms_leftop);
-    // Делаем строку для вывода
     let str_timer = `${res.getHours()}:${res.getMinutes()}:${res.getSeconds()}`;
     let str_timerop = `${resop.getHours()}:${resop.getMinutes()}:${resop.getSeconds()}`;
-    // Выводим время
     timer_show.innerHTML = str_timer;
     timerop_show.innerHTML = str_timerop;
     
     if (ndate.getHours() > 20 || ndate.getHours() < 5 ){
-        var oR = false;
-    } else {
         var oR = true;
+    } else {
+        var oR = false;
     }
     if (oR == true){
         if (timer_show.classList.contains("openNow") == true){
@@ -216,13 +180,6 @@ timer = setInterval(function () {
     }
 }, 1000)}
         </script>
-
-
-
-
-
-
-
         </div>
     </body>
     <footer align = "center">
