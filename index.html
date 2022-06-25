@@ -10,6 +10,7 @@
 </head>
     <body>
         <header align = "center" >
+            a.logo>img
             <a href="index.html" class="logo"><img src="images/Shapka.jpg" alt=""></a>
         <ul class="mnu_top">
             <li><a href="index.html">Главная</a></li>
@@ -170,10 +171,10 @@ timer = setInterval(function () {
     timer_show.innerHTML = str_timer;
     timerop_show.innerHTML = str_timerop;
     
-    if (ndate.getHours() > 20){
-        var oR = true;
-    } else {
+    if (ndate.getHours() > 20 || ndate.getHours() < 5 ){
         var oR = false;
+    } else {
+        var oR = true;
     }
     if (oR == true){
         if (timer_show.classList.contains("openNow") == true){
@@ -185,7 +186,7 @@ timer = setInterval(function () {
             At.classList.add("AtOpen");
         }
         if (No.classList.contains("NowOpen")){
-            No.classList.remove("NowOpe");
+            No.classList.remove("NowOpen");
             No.classList.add("nOpen");
         }
         if (timerop_show.classList.contains("opensa") == true){
