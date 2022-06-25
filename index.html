@@ -4,7 +4,10 @@
         <meta charset = "UTF-8">
         <title>Клуб Hazzer</title>
         <link rel ="stylesheet" type ="text/css" href="css/style.css">
-    </head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
+</head>
     <body>
         <header align = "center" >
             <a href="index.html" class="logo"><img src="images/Shapka.jpg" alt=""></a>
@@ -22,6 +25,7 @@
             </a></li>
         </ul> 
         </header>
+
         <script> 
         function myFunction() {
             var popup = document.getElementById("myPopup");
@@ -30,10 +34,189 @@
         </script>
        
         <div class="hed">
-            <h2>Главная</h2>
+            <h1>Главная</h1>
         </div>
+        <div class="main">
+            <div class="text">
+                <div id = hideNO class="NowOpen">
+            <div id="timer" class = "openNow"></div>
+                    <h2>Наш клуб сейчас открыт!</h2> <br>
+                    <p>Веселье в клубе будет продолжаться еще столько времени! Ты успеешь к нам заскочить! Мы тебя ждем!</p>
+                </div>
+                <div id = hideAT class="AtOpen">
+            <div id="timerop" class = "openAt"></div>
+                    <h2>Клуб будет открыт через столько времени</h2>
+                    <p>Мы тебя ждем у нас, как только откроемся залетай к нам. В нашем клубе мы делаем всех людей счастливее и веселее</p>
+                </div>
+            </div>
+            <div class="leftside">
+                <div class="elem">
+                    <h2 class="bord">25.07.2022 - Дискотека 90-х</h2>
+                    <img class="post" src="images/poster90st.jpg" alt="">
+                    <p>Посетите незабываемое событие - вечеринка 90-х. У нас будет все хиты взяты прямо с этой эпохи. Тематические костюмы. Только хорошая музыка. Приходите! 25 июля в 21:00</p>
+                </div>
+                <div class="elem">
+                    <h2 class="bord">30.07.2022 - Только РОК!!!</h2>
+                    <img class="post" src="images/rock-music-poster-2773311.jpg" alt="">
+                    <p>Вы отчаянный любитель рока? Но негде потусить?. 30 июля в 21:00 только горячие хиты 90-х 00-х. Тематические костюмы. Только хорошая музыка. Приходите! 30 июля в 21:00 </p>
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+
         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+            let timer_show = document.getElementById("timer");
+            let timerop_show = document.getElementById("timerop");
+            let No = document.getElementById("hideNO");
+            let At = document.getElementById("hideAT");
+
+function diffSubtract(date1, date2) {
+    return date2 - date1;
+}
+
+let end_date = {
+    "hours": "2", // Час
+    "minutes": "00", // Минуты
+    "seconds": "00" // Секунды
+}
+let start_date = {
+    "hours": "17", // Час
+    "minutes": "00", // Минуты
+    "seconds": "00" // Секунды
+}
+let nowday = new Date();
+let sdf = nowday.getHours();
+
+
+if (sdf < 5) {
+    let end_date_str = `${nowday.getFullYear()}.${nowday.getDay()}.${nowday.getDate()}.${end_date.hours}:${end_date.minutes}:${end_date.seconds}`;
+
+
+
+    let start_date_str = `${nowday.getFullYear()}.${nowday.getDay()}.${nowday.getDate()}.${start_date.hours}:${start_date.minutes}:${start_date.seconds}`;
+
+    
+timer = setInterval(function () {
+    // Получение времени сейчас
+    let now = new Date();
+    let nnow = `${now.getFullYear()}.${now.getDay()}.${now.getDate()}.${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+    // Получение заданного времени
+    let ndate = new Date(nnow);
+    let date = new Date(end_date_str);
+    let dateopen = new Date(start_date_str);
+    // Вычисление разницы времени 
+    let ms_left = diffSubtract(ndate, date);
+    let ms_leftop = diffSubtract(ndate, dateopen);
+    // Получаем время зависимую от разницы
+    let res = new Date(ms_left);
+    let resop = new Date(ms_leftop);
+    // Делаем строку для вывода
+    let str_timer = `${res.getHours()}:${res.getMinutes()}:${res.getSeconds()}`;
+    let str_timerop = `${resop.getHours()}:${resop.getMinutes()}:${resop.getSeconds()}`;
+    // Выводим время
+    timer_show.innerHTML = str_timer;
+    timerop_show.innerHTML = str_timerop;
+}, 1000)}
+
+if (sdf > 5) {
+    let end_date_str = `${nowday.getFullYear()}.${nowday.getDay()}.${nowday.getDate() +1}.${end_date.hours}:${end_date.minutes}:${end_date.seconds}`;
+
+
+
+    let start_date_str = `${nowday.getFullYear()}.${nowday.getDay()}.${nowday.getDate()}.${start_date.hours}:${start_date.minutes}:${start_date.seconds}`;
+
+    
+timer = setInterval(function () {
+    // Получение времени сейчас
+    let now = new Date();
+    let nnow = `${now.getFullYear()}.${now.getDay()}.${now.getDate()}.${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+    // Получение заданного времени
+    let ndate = new Date(nnow);
+    let date = new Date(end_date_str);
+    let dateopen = new Date(start_date_str);
+    // Вычисление разницы времени 
+    let ms_left = diffSubtract(ndate, date);
+    let ms_leftop = diffSubtract(ndate, dateopen);
+    // Получаем время зависимую от разницы
+    let res = new Date(ms_left);
+    let resop = new Date(ms_leftop);
+    // Делаем строку для вывода
+    let str_timer = `${res.getHours()}:${res.getMinutes()}:${res.getSeconds()}`;
+    let str_timerop = `${resop.getHours()}:${resop.getMinutes()}:${resop.getSeconds()}`;
+    // Выводим время
+    timer_show.innerHTML = str_timer;
+    timerop_show.innerHTML = str_timerop;
+    
+    if (ndate.getHours() > 20){
+        var oR = true;
+    } else {
+        var oR = false;
+    }
+    if (oR == true){
+        if (timer_show.classList.contains("openNow") == true){
+        timer_show.classList.remove("openNow");
+        timer_show.classList.add("opensn");
+        }
+        if (At.classList.contains("aOpen") == true){
+            At.classList.remove("aOpen");
+            At.classList.add("AtOpen");
+        }
+        if (No.classList.contains("NowOpen")){
+            No.classList.remove("NowOpe");
+            No.classList.add("nOpen");
+        }
+        if (timerop_show.classList.contains("opensa") == true){
+        timerop_show.classList.remove("opensa");
+        timerop_show.classList.add("openAt");
+        }
+    
+    } 
+    if (oR == false){
         
+        if (timerop_show.classList.contains("openAt") == true){
+        timerop_show.classList.remove("openAt");
+        timerop_show.classList.add("opensa");
+        }
+        if (At.classList.contains("AtOpen") == true){
+            At.classList.remove("AtOpen");
+            At.classList.add("aOpen");
+        }
+        if (No.classList.contains("nOpen")){
+            No.classList.remove("nOpen");
+            No.classList.add("NowOpe");
+        }
+        if (timer_show.classList.contains("opensn") == true){
+        timer_show.classList.remove("opensn");
+        timer_show.classList.add("openNow");
+        }
+
+    }
+}, 1000)}
+        </script>
+
 
 
 
