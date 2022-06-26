@@ -10,7 +10,6 @@
 </head>
     <body>
         <header align = "center" >
-            a.logo>img
             <a href="index.html" class="logo"><img src="images/Shapka.jpg" alt=""></a>
         <ul class="mnu_top">
             <li><a href="index.html">Главная</a></li>
@@ -83,21 +82,22 @@ let start_date = {
     "minutes": "00", 
     "seconds": "00"
 }
+
 let nowday = new Date();
 let sdf = nowday.getHours();
 
 
 if (sdf < 5) {
-    let end_date_str = `${nowday.getFullYear()}.${nowday.getDay()}.${nowday.getDate()}.${end_date.hours}:${end_date.minutes}:${end_date.seconds}`;
+    let end_date_str = `${nowday.getFullYear()}.${nowday.getMonth() + 1}.${nowday.getDate()}.${end_date.hours}:${end_date.minutes}:${end_date.seconds}`;
 
 
 
-    let start_date_str = `${nowday.getFullYear()}.${nowday.getDay()}.${nowday.getDate()}.${start_date.hours}:${start_date.minutes}:${start_date.seconds}`;
+    let start_date_str = `${nowday.getFullYear()}.${nowday.getMonth() + 1}.${nowday.getDate()}.${start_date.hours}:${start_date.minutes}:${start_date.seconds}`;
 
     
 timer = setInterval(function () {
     let now = new Date();
-    let nnow = `${now.getFullYear()}.${now.getDay()}.${now.getDate()}.${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+    let nnow = `${now.getFullYear()}.${now.getMonth() + 1}.${now.getDate()}.${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
     let ndate = new Date(nnow);
     let date = new Date(end_date_str);
     let dateopen = new Date(start_date_str);
@@ -109,19 +109,64 @@ timer = setInterval(function () {
     let str_timerop = `${resop.getHours()}:${resop.getMinutes()}:${resop.getSeconds()}`;
     timer_show.innerHTML = str_timer;
     timerop_show.innerHTML = str_timerop;
+
+    if (ndate.getHours() > 20 || ndate.getHours() < 5 ){
+        var oR = true;
+    } else {
+        var oR = false;
+    }
+    if (oR == true){
+        if (timer_show.classList.contains("openNow") == true){
+        timer_show.classList.remove("openNow");
+        timer_show.classList.add("opensn");
+        }
+        if (At.classList.contains("aOpen") == true){
+            At.classList.remove("aOpen");
+            At.classList.add("AtOpen");
+        }
+        if (No.classList.contains("NowOpen")){
+            No.classList.remove("NowOpen");
+            No.classList.add("nOpen");
+        }
+        if (timerop_show.classList.contains("opensa") == true){
+        timerop_show.classList.remove("opensa");
+        timerop_show.classList.add("openAt");
+        }
+    
+    } 
+    if (oR == false){
+        
+        if (timerop_show.classList.contains("openAt") == true){
+        timerop_show.classList.remove("openAt");
+        timerop_show.classList.add("opensa");
+        }
+        if (At.classList.contains("AtOpen") == true){
+            At.classList.remove("AtOpen");
+            At.classList.add("aOpen");
+        }
+        if (No.classList.contains("nOpen")){
+            No.classList.remove("nOpen");
+            No.classList.add("NowOpe");
+        }
+        if (timer_show.classList.contains("opensn") == true){
+        timer_show.classList.remove("opensn");
+        timer_show.classList.add("openNow");
+        }
+
+    }
 }, 1000)}
 
 if (sdf > 5) {
-    let end_date_str = `${nowday.getFullYear()}.${nowday.getDay()}.${nowday.getDate() +1}.${end_date.hours}:${end_date.minutes}:${end_date.seconds}`;
+    let end_date_str = `${nowday.getFullYear()}.${nowday.getMonth() + 1}.${nowday.getDate() +1}.${end_date.hours}:${end_date.minutes}:${end_date.seconds}`;
 
 
 
-    let start_date_str = `${nowday.getFullYear()}.${nowday.getDay()}.${nowday.getDate()}.${start_date.hours}:${start_date.minutes}:${start_date.seconds}`;
+    let start_date_str = `${nowday.getFullYear()}.${nowday.getMonth() + 1}.${nowday.getDate()}.${start_date.hours}:${start_date.minutes}:${start_date.seconds}`;
 
     
 timer = setInterval(function () {
     let now = new Date();
-    let nnow = `${now.getFullYear()}.${now.getDay()}.${now.getDate()}.${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+    let nnow = `${now.getFullYear()}.${now.getMonth() + 1}.${now.getDate()}.${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
     let ndate = new Date(nnow);
     let date = new Date(end_date_str);
     let dateopen = new Date(start_date_str);
